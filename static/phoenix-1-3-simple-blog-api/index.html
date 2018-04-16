@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Proste API postów Phoenix 1.3 oraz testowanie API narzędziem Postman</title>
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css?v=34e41c643f" />
+	
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="mDevStudio" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Proste API postów Phoenix 1.3 oraz testowanie API narzędziem Postman" />
+    <meta property="og:description" content="Cześć koderzy. Mam na imię Kacper i kocham to od czego tak naprawdę nasz użytkownik jest najbardziej oddalony. Wiesz już co mam na myśli? Czytając ten artykuł pewnie również podobnie myślisz. Tak chodzi o backend oraz bazy danych. Z tych zagadnień będę właśnie pisał teksty, również czasem poruszę temat rozwoju" />
+    <meta property="og:url" content="http://localhost:2368/phoenix-1-3-simple-blog-api/" />
+    <meta property="article:published_time" content="2018-04-16T15:23:43.000Z" />
+    <meta property="article:modified_time" content="2018-04-16T15:23:43.000Z" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Proste API postów Phoenix 1.3 oraz testowanie API narzędziem Postman" />
+    <meta name="twitter:description" content="Cześć koderzy. Mam na imię Kacper i kocham to od czego tak naprawdę nasz użytkownik jest najbardziej oddalony. Wiesz już co mam na myśli? Czytając ten artykuł pewnie również podobnie myślisz. Tak chodzi o backend oraz bazy danych. Z tych zagadnień będę właśnie pisał teksty, również czasem poruszę temat rozwoju" />
+    <meta name="twitter:url" content="http://localhost:2368/phoenix-1-3-simple-blog-api/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Kacper Latuszewski" />
+    <meta name="twitter:creator" content="@kacpx123" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "mDevStudio",
+        "logo": "https://casper.ghost.org/v1.0.0/images/ghost-logo.svg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Kacper Latuszewski",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2018/04/17796251_783210371836655_6149820106762522064_n.jpg",
+            "width": 960,
+            "height": 960
+        },
+        "url": "http://localhost:2368/author/kacper/",
+        "sameAs": [
+            "https://kacperlatuszewski.pl",
+            "https://twitter.com/kacpx123"
+        ]
+    },
+    "headline": "Proste API postów Phoenix 1.3 oraz testowanie API narzędziem Postman",
+    "url": "http://localhost:2368/phoenix-1-3-simple-blog-api/",
+    "datePublished": "2018-04-16T15:23:43.000Z",
+    "dateModified": "2018-04-16T15:23:43.000Z",
+    "description": "Cześć koderzy. Mam na imię Kacper i kocham to od czego tak naprawdę nasz użytkownik jest najbardziej oddalony. Wiesz już co mam na myśli? Czytając ten artykuł pewnie również podobnie myślisz. Tak chodzi o backend oraz bazy danych. Z tych zagadnień będę właśnie pisał teksty, również czasem poruszę temat rozwoju",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <script type="text/javascript" src="../public/ghost-sdk.js?v=34e41c643f"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "88675302e3d8"
+});
+</script>
+    <meta name="generator" content="Ghost 1.22" />
+    <link rel="alternate" type="application/rss+xml" title="mDevStudio" href="../rss/index.html" />
+    <script>var disqus = 'mdevstudio';</script>
+</head>
+
+<body class="post-template">
+
+	<nav id="menu">
+	<a class="close-button">Close</a>
+	<div class="nav-wrapper">
+		<p class="nav-label">Menu</p>
+		<ul>
+			<li class="nav-home" role="presentation"><a href="https://mdevstudio.github.io">Home</a></li>
+			<li class="nav-our-github" role="presentation"><a href="https://github.com/mdevstudio/">Our GitHub</a></li>
+			<li class="nav-subscribe"><a href="../subscribe/index.html"><i class="ic ic-mail"></i> Subscribe</a></li>
+		</ul>
+	</div>
+</nav>
+
+
+	<section id="wrapper">
+		<a class="hidden-close"></a>
+		
+
+<div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<header id="post-header">
+	<div class="inner">
+		<nav id="navigation">
+			<span class="blog-logo">
+				<a href="../index.html"><img src="https://casper.ghost.org/v1.0.0/images/ghost-logo.svg" alt="Blog Logo" /></a>
+			</span>
+			<span id="menu-button" class="nav-button">
+				<a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+			</span>
+		</nav>
+		<h1 class="post-title">Proste API postów Phoenix 1.3 oraz testowanie API narzędziem Postman</h1>
+		<span class="post-meta"><a href="../author/kacper/index.html">Kacper Latuszewski</a> | <time datetime="2018-04-16">16 kwi 2018</time></span>
+		
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="post">
+		<div class="inner">
+
+			<section class="post-content">
+				<div class="kg-card-markdown"><p>Cześć koderzy. Mam na imię Kacper i kocham to od czego tak naprawdę nasz użytkownik jest najbardziej oddalony. Wiesz już co mam na myśli? Czytając ten artykuł pewnie również podobnie myślisz. Tak chodzi o backend oraz bazy danych. Z tych zagadnień będę właśnie pisał teksty, również czasem poruszę temat rozwoju osobistego. Artykuł dedykuję osobom, które chcą zacząć pisać API w Phoenix, ale nie wiedzą co, gdzie ugryźć. Nie przejmujcie spróbuje wam wszystko dokładnie po kolei rozpisać, ponieważ każdy musi kiedyś zacząć, a wiem że wiele artykułów nie skupia się na najprostszych rzeczach, które osobie zaczynającej mogą czasami ucieknąć.</p>
+<p>Zajmiemy się tworzeniem prostego API w funkcyjnym języku Elixir z wykorzystaniem frameworka Phoenix w wersji 1.3 i przy okazji nauczę was testować API z wykorzystaniem narzędzia Postman.</p>
+<h1 id="tworzymyapi">Tworzymy API</h1>
+<p>Zaczynamy od stworzenia naszego projektu komendą:</p>
+<p><code>phx.new blog --no-html --no-brunch</code></p>
+<p>Jeżeli już wygenerowaliśmy API, przechodzimy do pliku config/dev.exs i konfigurujemy naszą bazę:</p>
+<pre><code>config :blog, Blog.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: &quot;your_username&quot;,
+  password: &quot;your_password&quot;,
+  database: &quot;blog_dev&quot;,
+  hostname: &quot;your_hostname&quot;,
+  pool_size: 10
+</code></pre>
+<p>Po wykonaniu tej czynności wywołujemy następującą komendę:</p>
+<p><code>mix ecto.create</code></p>
+<p>Teraz wygenerujemy schemat postów:</p>
+<p><code>mix phx.gen.json Posts Post posts title:string content:string</code></p>
+<p>Teraz musimy dodać do routera (blog_web/router.ex) nasze endpointy:</p>
+<pre><code>  scope &quot;/api&quot;, BlogWeb do
+    pipe_through :api
+
+    get &quot;/show_posts&quot;, PostController, :index
+    get &quot;/show_post&quot;, PostController, :show
+    post &quot;/add_post&quot;, PostController, :create
+    put &quot;/edit_post&quot;, PostController, :edit
+    delete &quot;/delete_post&quot;, PostController, :delete
+  end
+</code></pre>
+<p>Po tym wykonujemy komendę:</p>
+<p><code>mix ecto.migrate</code></p>
+<p>Oraz odpalamy serwer:</p>
+<p><code>mix phx.server</code></p>
+<p>Teraz sprawdzimy czy działa nasze API, poprzez dodanie postów z poziomu konsoli Elixira:</p>
+<pre><code>alias Blog.Posts.Post
+alias Repo
+</code></pre>
+<p><em>#post1</em><br>
+<code>changeset = Post.changeset(%Post{}, %{title: &quot;Article 1&quot;, content: &quot;Przykladowy tekst artykulu&quot;})</code></p>
+<p><code>{:error, changeset} = Repo.insert(changeset)</code></p>
+<p><em>#post2</em><br>
+<code>changeset = Post.changeset(%Post{}, %{title: &quot;Article 2&quot;, content: &quot;Przykladowy tekst artykulu&quot;})</code></p>
+<p><code>{:error, changeset} = Repo.insert(changeset)</code></p>
+<p>Teraz aby przetestować czy nasze API działa poprawnie użyjemy narzędzia Postman można go użyć w wersji desktopowej lub w wersji dodatku do przeglądarki chrome:</p>
+<h1 id="testgetapishow_posts">Test GET .../api/show_posts</h1>
+<p>Wybieramy methode <strong>GET</strong>, <strong>wpisujemy nasz url do show_posts (.../api/show_posts)</strong> i <strong>klikamy send</strong>. Jeżeli wszystko dobrze wykonaliście powinny wam się wyświetlić dwa artykuły.<br>
+<img src="../content/images/2018/04/show_posts-1.jpg" alt="show_posts-1"></p>
+<h1 id="testgetapishow_postid">Test GET .../api/show_post/id</h1>
+<p>Wybieramy methode <strong>GET</strong>, <strong>wpisujemy nasz url do show_post (.../api/show_post/<mark>id</mark>)</strong> i <strong>klikamy send</strong>. Jeżeli wszystko dobrze wykonaliście powinny wam się wyświetlić dwa artykuły.<br>
+<img src="../content/images/2018/04/show_post-1.jpg" alt="show_post-1"></p>
+<h1 id="testpostapiadd_post">Test POST .../api/add_post</h1>
+<p>Wybieramy methode <strong>POST</strong>, <strong>wpisujemy nasz url do add_post (.../api/add_post)</strong> w tym przypadku musimy zdefiniować obiekt jaki wyślemy, więc wybieramy body, zaznaczamy opcję raw i musimy wybrac JSON(application/json). Teraz musimy utworzyć nasz obiekt.</p>
+<pre><code>{
+&quot;post&quot;: {
+    &quot;title&quot;: &quot;Article 3&quot;,
+    &quot;content&quot;: &quot;Przykladowy tekst artykulu&quot;
+    }
+}
+</code></pre>
+<p><img src="../content/images/2018/04/add_post.jpg" alt="add_post"></p>
+<p>Teraz możemy sprawdzić czy wszystko działa wykorzystując wcześniej poznaną metodę <strong>GET</strong>, pobieramy listę wszystkich artykułów (.../api/show_posts).</p>
+<p><img src="../content/images/2018/04/3-article.jpg" alt="3-article"></p>
+<p>Jeżeli wszystko dobrze wykonaliście powiniem wam się wyświetlić nowy 3 artykuł.</p>
+<h1 id="testputapiedit_postid">Test PUT .../api/edit_post/id</h1>
+<p>Wybieramy methode <strong>PUT</strong>, <strong>wpisujemy nasz url do add_post (.../api/edit_post/<mark>id</mark>)</strong> w tym przypadku musimy ponownie zdefiniować obiekt jaki wyślemy w zamian za stary, więc wybieramy body, zaznaczamy opcję raw i musimy wybrac JSON(application/json). Teraz musimy utworzyć nasz zmieniony obiekt.</p>
+<pre><code>{
+&quot;post&quot;: {
+    &quot;title&quot;: &quot;Article 3&quot;,
+    &quot;content&quot;: &quot;ZMIENIONY&quot;
+    }
+}
+</code></pre>
+<p><img src="../content/images/2018/04/edit.jpg" alt="edit"></p>
+<p><img src="../content/images/2018/04/zmieniony.jpg" alt="zmieniony"></p>
+<h1 id="testdeleteapidelete_postid">Test DELETE .../api/delete_post/id</h1>
+<p>Wybieramy methode <strong>PUT</strong>, <strong>wpisujemy nasz url do add_post (.../api/delete_post/<mark>id</mark>)</strong>.</p>
+<p><img src="../content/images/2018/04/delete-2.jpeg" alt="delete-2"></p>
+<p>Mam nadzieję, że podobał wam się ten dość krótki artykuł na temat Phoenix. W razie trudności lub niejasności proszę pisać w komentarzach.</p>
+</div>
+			</section>
+
+			<section class="post-info">
+
+				<div class="post-share">
+					<a class="twitter" href="https://twitter.com/share?text=Proste API postów Phoenix 1.3 oraz testowanie API narzędziem Postman&url=https://mdevstudio.github./static/phoenix-1-3-simple-blog-api/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+					</a>
+					<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://mdevstudio.github.io/static/phoenix-1-3-simple-blog-api/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+					</a>
+					<a class="googleplus" href="https://plus.google.com/share?url=https://mdevstudio.github.io/static/phoenix-1-3-simple-blog-api/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+						<i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+					</a>
+					<div class="clear"></div>
+				</div>
+
+				<aside class="post-tags">
+					
+				</aside>
+
+				<div class="clear"></div>
+
+				<aside class="post-author">
+					<figure class="post-author-avatar avatar">
+							<img src="../content/images/2018/04/17796251_783210371836655_6149820106762522064_n.jpg" alt="Kacper Latuszewski" />
+					</figure>
+					<div class="post-author-bio">
+						<h4 class="post-author-name"><a href="../author/kacper/index.html">Kacper Latuszewski</a></h4>
+							<span class="post-author-website"><i class="ic ic-link"></i> <a href="https://kacperlatuszewski.pl">Website</a></span>
+							<span class="post-author-twitter"><i class="ic ic-twitter"></i> <a target="_blank" href="https://twitter.com/@kacpx123">Twitter</a></span>
+					</div>
+					<div class="clear"></div>
+				</aside>
+
+			</section>
+
+
+			<section class="post-comments">
+				<a id="show-disqus" class="post-comments-activate">Show Comments</a>
+			    <div id="disqus_thread"></div>
+			</section>
+
+            <section class="post-subscribe">
+                <form method="post" action="../subscribe/index.html" class="post-subscribe-form">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="post-subscribe-input" type="email" name="email"  placeholder="Your email address" />
+    </div>
+    <button class="post-subscribe-button" type="submit"><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+
+                <p>Get the latest posts delivered right to your inbox.</p>
+            </section>
+
+			<aside class="post-nav">
+					<a class="post-nav-prev" href="../hello-world/index.html">
+						<section class="post-nav-teaser">
+							<i class="ic ic-arrow-right"></i>
+							<h2 class="post-nav-title">Hello world</h2>
+							<p class="post-nav-excerpt">Tym tradycyjnym programistycznym powitaniem witam was na naszym nowym blogu, na którym&hellip;</p>
+						</section>
+					</a>
+				<div class="clear"></div>
+			</aside>
+
+
+		</div>
+	</article>
+</main>
+
+
+		<div id="body-class" style="display: none;" class="post-template"></div>
+
+		<footer id="footer">
+			<div class="inner">
+				<section class="credits">
+					<span class="credits-theme">Theme <a href="https://github.com/zutrinken/attila">Attila</a> by <a href="http://zutrinken.com" rel="nofollow">zutrinken</a></span>
+					<span class="credits-software">Published with <a href="http://ghost.org">Ghost</a></span>
+				</section>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="../assets/js/script.js?v=34e41c643f"></script>
+
+	
+
+</body>
+</html>

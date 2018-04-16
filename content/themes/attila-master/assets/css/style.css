@@ -562,7 +562,7 @@ pre {
   overflow: hidden;
   font-family: 'Inconsolata', monospace, sans-serif;
   white-space: pre;
-  background: #faf9f7;
+  background: #222222;
   border: 1px solid #e5e4e1;
   box-sizing: border-box; }
 
@@ -573,12 +573,11 @@ pre .lines {
   left: 0;
   top: 0;
   padding: 1.334em 0;
-  border-right: 1px solid #e5e4e1;
   font-size: 0.75em;
+  color: #999999;
   line-height: 2em;
   text-align: right;
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.5); }
+  box-sizing: border-box; }
 
 pre .lines .line {
   display: block;
@@ -820,6 +819,7 @@ img {
 
 .menu-active #wrapper .hidden-close {
   display: block; }
+
 
 .inner {
   max-width: 32em;
